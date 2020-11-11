@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{news_item.title}} :: {{ block.super}}
+{% endblock %}
+
+{% block sidebar %}
+<div class="col-md-3">
+     <div class="list-group">
+          {% for item in categories %}
+          <a href= "{% url 'category' item.pk%} "class="list-group-item list-group-item-action">{{ item.title}}</a>
+          {% endfor %}
+     </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="col-md-9">
+
+    <div class="card mb-3">
+        <div class="card-header">
+            Категория: {{news_item.category}}
+        </div>
+        <div class="card-body">
+                             <div class="media">
+                                    <img src="{{ te.image.url }}" alt="" width="20" class="mr-3">
+                                    <img src="https://picsum.photos/id/1060/350/300/?blur=2" alt="" class="mr-1" >
+                                <div class="media-body">
+                            <h5 class="card-title" >{{news_item.title}}</h5>
+                            <p class="card-text">{{news_item.content}}</p>
+                            <a href="#" class="btn btn-primary">Read more...</a>
+                        </div>
+                             </div>
+                        </div>
+                        <div class="card-footer text-muted">
+                            {{news_item.created_at}}
+
+  </div>
+</div>
+</div>
+
+
+
+{% endblock %}
